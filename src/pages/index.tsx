@@ -62,9 +62,9 @@ export default function Home() {
   useEffect(() => {
     const filtered = canciones.filter(cancion => {
       const matchSearch = cancion.titulo.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchGenero = filterGenero === '' || cancion.genero === filterGenero;
-      const matchTono = filterTono === '' || cancion.tono === filterTono;
-      const matchEstado = filterEstado === '' || cancion.estado === filterEstado;
+      const matchGenero = filterGenero === '' || cancion.genero.trim() === filterGenero.trim();
+      const matchTono = filterTono === '' || cancion.tono.trim() === filterTono.trim();
+      const matchEstado = filterEstado === '' || cancion.estado.trim() === filterEstado.trim();
       
       return matchSearch && matchGenero && matchTono && matchEstado;
     });
