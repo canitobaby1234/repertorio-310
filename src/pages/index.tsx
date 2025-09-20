@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { Plus, Search, Filter, Edit2, Trash2, Save, X, Download, Music, Guitar, FileText, FileSpreadsheet } from 'lucide-react';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 
 // Interfaces TypeScript
@@ -215,8 +215,7 @@ export default function Home() {
       cancion.estado
     ]);
 
-    // @ts-expect-error - jspdf-autotable types are not fully compatible
-    doc.autoTable({
+    autoTable(doc, {
       head: [tableColumns],
       body: tableRows,
       startY: 80,
